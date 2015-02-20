@@ -5,6 +5,7 @@ module.exports = function (grunt) {
     require('load-grunt-config')(grunt);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'jscs', 'test']);
     grunt.registerTask('test', ['mochacli']);
+    grunt.registerTask('lint', ['jshint', 'jscs']);
+    grunt.registerTask('default', ['lint', 'test']);
 };
