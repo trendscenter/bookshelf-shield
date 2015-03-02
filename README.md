@@ -1,6 +1,15 @@
 # node_boilerplate
 boilerplate repo for node projects. Contains the official jshint and jscs RC files, as well as a basic Gruntfile and package.json to get you started.
 
+# Copying
+Follow these steps to start a new project with this boilerplate.
+1. Create a new empty repo on github, and copy the URL.
+1. Clone **this** repo onto your machine.
+1. cd into this repo on your machine.
+1. Change the remote url to point to your new repo: `git remote set-url origin <paste url here>`.
+1. Push to the new repo: git push -u origin master.
+1. Be sure to modify package.json and this readme to reflect your project. 
+
 ## Linting
 Two packages are used for linting: jscs and jshint.
 The configuration for these linters can be found in `.jscs.json` and `.jshintrc`, respectively.
@@ -38,3 +47,4 @@ See index.js for an example.
 
 ## Contributing
 Please submit any changes to this repo (including additions and subtractions from the lint config files) as pull requests. 
+
