@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(grunt) {
+module.exports = function() {
     return {
         options: {
             files: 'test/*_test.js'

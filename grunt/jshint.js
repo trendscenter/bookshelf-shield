@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(grunt) {
+module.exports = function() {
     return {
         all: [
             'test/**.js',
@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             'lib/**.js'
         ],
         options: {
-            jshintrc: '.jshintrc',
+            jshintrc: '.jshintrc'
         }
     };
 };

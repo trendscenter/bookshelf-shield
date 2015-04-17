@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(grunt) {
+module.exports = function() {
     return {
         all: {
             options: {
@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                     'grunt/**.js',
                     '*.js',
                     'lib/**.js'
-                ],
+                ]
             }
         }
     };

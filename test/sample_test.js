@@ -1,4 +1,5 @@
 'use strict';
+/*
 
 var should = require('should');
 
@@ -25,3 +26,4 @@ describe('Array', function() {
         });
     });
 });
+*/
