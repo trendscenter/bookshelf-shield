@@ -9,12 +9,16 @@
   "dependencies": {
     "babel": "5.1.10",
     "create-error": "0.3.1",
+    "joi": "^6.2.0",
     "lodash": "3.6.0",
     "relations": "0.5.0",
+    "should-promised": "^0.2.1",
     "thenify-all": "1.6.0"
   },
   "devDependencies": {
     "bookshelf": "0.7.9",
+    "chai": "^2.2.0",
+    "chai-as-promised": "^5.0.0",
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.11.0",
     "grunt-jscs": "1.5.0",

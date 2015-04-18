@@ -4,7 +4,7 @@
    * =================
    */
   "esnext": true,
-
+  "mocha": true,
   // Define globals exposed by modern browsers.
   "browser": true,
 
