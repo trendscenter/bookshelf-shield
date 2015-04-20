@@ -9,10 +9,8 @@
   "dependencies": {
     "babel": "5.1.10",
     "create-error": "0.3.1",
-    "joi": "^6.2.0",
+    "joi": "6.2.0",
     "lodash": "3.6.0",
-    "relations": "0.5.0",
-    "should-promised": "^0.2.1",
     "thenify-all": "1.6.0"
   },
   "devDependencies": {
@@ -26,9 +24,8 @@
     "knex": "0.7.6",
     "load-grunt-config": "0.16.0",
     "load-grunt-tasks": "3.1.0",
-    "pg": "4.3.0",
+    "mock-knex": "^0.1.2",
     "relations": "0.5.0",
-    "should": "5.0.0",
     "time-grunt": "1.0.0"
   },
   "scripts": {

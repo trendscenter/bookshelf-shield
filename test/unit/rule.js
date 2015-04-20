@@ -6,17 +6,15 @@ const chaiAsPromised = require('chai-as-promised');
 const relations = require('../stubs/relations');
 const expect = chai.expect;
 const AuthError = require('../../lib/error.js');
+const Model = require('../stubs/Model.js').extend();
 
 chai.use(chaiAsPromised);
 chai.should();
 
-describe('Rule', function() {
+describe('Rule', () => {
     let rule;
-    let testUser = { username: 'test' };
-    let testModel = {
-        modelType: 'test',
-        get: function() { return 'testVal'; }
-    };
+    let testUser = { username: 'testUser' };
+    let testModel = new Model();
     let testMethod = function(user) {
         return Promise.resolve({
             user: user,
@@ -24,12 +22,16 @@ describe('Rule', function() {
         });
     };
 
-    beforeEach('Require Rule Class', function() {
+    beforeEach('Require Rule Class', () => {
         rule = new Rule('test', testMethod);
     });
 
-    describe('constructor', function() {
-        it('should have an action and method property', function() {
+    describe('constructor', () => {
+        it('should return an instance of Rule', () => {
+            rule.should.be.an.instanceOf(Rule);
+        });
+
+        it('should have an action and method property', () => {
             rule.should.have.property('action');
             rule.action.should.eql('test');
             rule.should.have.property('method');
@@ -37,8 +39,8 @@ describe('Rule', function() {
         });
     });
 
-    describe('applyTo', function() {
-        it('should return a promise that resolves model and user', function() {
+    describe('applyTo', () => {
+        it('should return a promise that resolves model and user', () => {
             const expected = {
                 user: testUser,
                 model: testModel
@@ -48,23 +50,23 @@ describe('Rule', function() {
         });
     });
 
-    describe('isApplicable', function() {
-        it('should return true when the action matches', function() {
+    describe('isApplicable', () => {
+        it('should return true when the action matches', () => {
             return rule.isApplicable('test').should.be.eql(true);
         });
 
-        it('should return false when the action does not match', function() {
+        it('should return false when the action does not match', () => {
             return rule.isApplicable('somethingElse').should.be.eql(false);
         });
     });
 
-    describe('buildGeneric', function() {
+    describe('buildGeneric', () => {
         let options;
-        const testFn = function() {
+        const testFn = () => {
             return Rule.buildGeneric(options);
         };
 
-        beforeEach('rebuild rule options', function() {
+        beforeEach('rebuild rule options', () => {
             options = {
                 actionName: 'test',
                 authKey: 'testId',
@@ -74,37 +76,37 @@ describe('Rule', function() {
             };
         });
 
-        it('should error if actionName is not specified', function() {
+        it('should error if actionName is not specified', () => {
             delete(options.actionName);
             expect(testFn).to.throw(Error);
         });
 
-        it('should error if authKey is not specified', function() {
+        it('should error if authKey is not specified', () => {
             delete(options.authKey);
             expect(testFn).to.throw(Error);
         });
 
-        it('should error if acl is not specified', function() {
+        it('should error if acl is not specified', () => {
             delete(options.acl);
             expect(testFn).to.throw(Error);
         });
 
-        it('should error if aclContextName is not specified', function() {
+        it('should error if aclContextName is not specified', () => {
             delete(options.aclContextName);
             expect(testFn).to.throw(Error);
         });
 
-        it('should error if modelName is not specified', function() {
+        it('should error if modelName is not specified', () => {
             delete(options.modelName);
             expect(testFn).to.throw(Error);
         });
 
-        it('should error if aclContextName is not a valid context', function() {
+        it('should error if aclContextName is not a valid context', () => {
             options.aclContextName = 'undefined';
             expect(testFn).to.throw(Error);
         });
 
-        it('should produce a Rule object if options are correct', function() {
+        it('should produce a Rule object if options are correct', () => {
             const rule = testFn();
             rule.should.have.property('action');
             rule.action.should.eql('test');
@@ -112,26 +114,37 @@ describe('Rule', function() {
             rule.method.should.be.a('function');
         });
 
-        describe('Generic Rule Method', function() {
-            it('should allow access if ACL returns true', function() {
+        describe('Generic Rule Method', () => {
+            it('should allow access if ACL returns true', () => {
                 const rule = testFn();
                 const result = rule.applyTo(testModel, testUser);
                 return result.should.become(true);
             });
 
-            it('should reject with AuthError if ACL returns false', function() {
+            it('should reject with AuthError if ACL returns false', () => {
                 options.aclContextName = 'alwaysFalse';
+                const expectedMsg = 'testUser cannot test testModel in ' + 
+                    'testId `testVal`';
                 const rule = testFn();
                 const result = rule.applyTo(testModel, testUser);
-                return result.should.be.rejectedWith(AuthError);
+                return result.should.be.rejectedWith(AuthError, expectedMsg);
             });
 
-            it('should reject if ACL rejects with error', function() {
+            it('should reject if ACL rejects with error', () => {
                 options.aclContextName = 'alwaysError';
                 const rule = testFn();
                 const result = rule.applyTo(testModel, testUser);
                 return result.should.be.rejectedWith(Error);
             });
+
+            it('should form the proper ACL question string', () => {
+                options.aclContextName = 'identity';
+                const expected = 'can testUser test_testModel from testVal';
+                const rule = testFn();
+                const result = rule.applyTo(testModel, testUser);
+                return result.should.become(expected);
+            });
+
         });
     });
 });
