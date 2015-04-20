@@ -1,16 +1,19 @@
+![Shield](http://media.moddb.com/images/articles/1/136/135611/auto/OldBatteredVikingShieldTwo_zpsd566f8c8.png)
+
 # bookshelf-shield
 Form a protective shield around your bookshelf models.
 This module adds ACL-based authorization, and a CRUD API to bookshelf models. 
+
 [ ![Codeship Status for MRN-Code/bookshelf-shield](https://codeship.com/projects/5003acd0-c992-0132-5525-0aefb56b1e0b/status?branch=master)](https://codeship.com/projects/75267)
 
-
+# Dependencies
 ### relations
 As of right now, bookshelf-shield only can interact with the ACL module called [relations](https://github.com/carlos8f/node-relations)
 Provides an intuitive interface for storing and querying Access Conrtol Lists.
 Relations is used to determine whether a user has been granted access to perform an action on the model.
 
 ### ES6
-This module utilizes ES6 features, including classes, arrow functions and Promises. As a result, running Node in harmony mode is recommended, and [Babel](https://babeljs.io) is used to polyfill these features.
+This module utilizes ES6 features, including classes, arrow functions and Promises. As a result, running Node in harmony mode is recommended, and [Babel](https://babeljs.io) is used to polyfill these features until they are standard-issue.
 
 # Usage
 1. Set up your ACL
