@@ -1,6 +1,6 @@
 {
   "name": "bookshelf-shield",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Access control list based authorization for bookshelf models",
   "main": "index.js",
   "directories": {
@@ -15,8 +15,8 @@
   },
   "devDependencies": {
     "bookshelf": "0.7.9",
-    "chai": "^2.2.0",
-    "chai-as-promised": "^5.0.0",
+    "chai": "2.2.0",
+    "chai-as-promised": "5.0.0",
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.11.0",
     "grunt-jscs": "1.5.0",
@@ -24,7 +24,7 @@
     "knex": "0.7.6",
     "load-grunt-config": "0.16.0",
     "load-grunt-tasks": "3.1.0",
-    "mock-knex": "^0.1.2",
+    "mock-knex": "0.1.2",
     "relations": "0.5.0",
     "time-grunt": "1.0.0"
   },
