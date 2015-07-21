@@ -4,5 +4,9 @@ module.exports = {
         modelName: 'test',
         aclContextName: 'alwaysTrue',
         authKey: 'testKey'
+    },
+    create: {
+        aclContextName: 'alwaysFalse',
+        authKey: 'overriddenTestKey'
     }
 };

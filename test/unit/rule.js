@@ -23,7 +23,7 @@ describe('Rule', () => {
     };
 
     beforeEach('Require Rule Class', () => {
-        rule = new Rule('test', testMethod);
+        rule = new Rule({ actionName: 'test', method: testMethod });
     });
 
     describe('constructor', () => {
@@ -31,11 +31,12 @@ describe('Rule', () => {
             rule.should.be.an.instanceOf(Rule);
         });
 
-        it('should have an action and method property', () => {
+        it('should have a config, action and method property', () => {
             rule.should.have.property('action');
             rule.action.should.eql('test');
             rule.should.have.property('method');
             rule.method.should.eql(testMethod);
+            rule.should.have.property('config');
         });
     });
 
@@ -123,7 +124,7 @@ describe('Rule', () => {
 
             it('should reject with AuthError if ACL returns false', () => {
                 options.aclContextName = 'alwaysFalse';
-                const expectedMsg = 'testUser cannot test testModel in ' + 
+                const expectedMsg = 'testUser cannot test testModel in ' +
                     'testId `testVal`';
                 const rule = testFn();
                 const result = rule.applyTo(testModel, testUser);

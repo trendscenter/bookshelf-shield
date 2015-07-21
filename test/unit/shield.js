@@ -60,6 +60,14 @@ describe('Shield', () => {
             expect(shield.rules).to.have.length(4);
         });
 
+        it('overrides defaults with action-specific config', () => {
+            const createRule = shield.getApplicableRules('create')[0];
+            console.log(createRule);
+            expect(createRule.config.aclContextName)
+                .to.eql('alwaysFalse');
+            expect(createRule.config.authKey).to.eql('overriddenTestKey');
+        });
+
         describe('getApplicableRules', () => {
             it('returns an array of rules for read action', () => {
                 const rules = shield.getApplicableRules('read');
@@ -128,4 +136,3 @@ describe('Shield', () => {
     });
 
 });
-
