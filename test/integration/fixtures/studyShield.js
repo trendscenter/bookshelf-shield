@@ -20,7 +20,7 @@ module.exports = {
 
             if (!siteId) {
                 return Promise.reject(
-                    new Error('Study has no valide siteId')
+                    new Error('Study has no valid siteId')
                 );
             }
 
@@ -39,4 +39,3 @@ module.exports = {
         }
     }
 };
-
