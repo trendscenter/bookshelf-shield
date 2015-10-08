@@ -33,7 +33,7 @@
     "test": "grunt test",
     "lint": "jshint lib/. test/.",
     "validate": "npm ls",
-    "build": "babel lib/main.js -o dist/main.js && git add dist/main.js"
+    "build": "babel --out-dir=dist lib && git add dist/*"
   },
   "repository": {
     "type": "git",
