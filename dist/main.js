@@ -1,6 +1,4 @@
 'use strict';
-
-require('babel/register');
 var Shield = require('./Shield.js');
 var wrapRelations = require('./wrapRelations.js');
 var _ = require('lodash');
