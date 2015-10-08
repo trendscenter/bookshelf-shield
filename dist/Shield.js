@@ -76,7 +76,7 @@ var Shield = (function () {
             delete authConfig.defaults;
             _.each(authConfig, function extendAndAddRule(ruleConfig, actionName) {
                 // extend each rule in the config with the defaults
-                ruleConfig = _.assign(_.cloneDeep(ruleConfig), _authConfig.defaults);
+                ruleConfig = _.assign(_.cloneDeep(_authConfig.defaults), _.cloneDeep(ruleConfig));
 
                 // add acl to the options
                 ruleConfig.acl = self.acl;
@@ -87,7 +87,7 @@ var Shield = (function () {
                 //TODO: validate that ruleConfig options are valid
                 if (_.isFunction(ruleConfig.method)) {
                     //custom auth method
-                    self.rules.push(new Rule(ruleConfig.actionName, ruleConfig.method));
+                    self.rules.push(new Rule(ruleConfig));
                 } else {
                     self.rules.push(Rule.buildGeneric(ruleConfig));
                 }
@@ -113,12 +113,12 @@ var Shield = (function () {
 
                 // Override access methods with error-throwing method
                 _this.Model.prototype[methName] = protectMethod;
-            });
+            }, this);
 
             // Add secure access methods
             _.each(secureMethods, function (method, methName) {
                 _this.Model.prototype[methName] = method;
-            });
+            }, this);
 
             return this;
         }

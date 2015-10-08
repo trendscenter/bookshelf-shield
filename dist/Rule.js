@@ -43,11 +43,12 @@ var Rule = (function () {
      *  }
      */
 
-    function Rule(action, method) {
+    function Rule(config) {
         _classCallCheck(this, Rule);
 
-        this.action = action;
-        this.method = method;
+        this.action = config.actionName;
+        this.method = config.method;
+        this.config = config;
     }
 
     /**
@@ -112,7 +113,9 @@ var Rule = (function () {
                 });
             };
 
-            return new Rule(options.actionName, method);
+            options.method = method;
+
+            return new Rule(options);
         }
     }]);
 

@@ -27,7 +27,7 @@ function enumerateFunctions(relations) {
  * @return {object} the same relations object with wrapped context methods
  */
 function wrap(relations) {
-    return thenifyAll(relations, relations, enumerateFunctions(relations));
+    return thenifyAll(relations, {}, enumerateFunctions(relations));
 }
 
 module.exports = wrap;
