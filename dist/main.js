@@ -1,9 +1,9 @@
 'use strict';
-const Shield = require('./Shield.js');
-const wrapRelations = require('./wrapRelations.js');
-const _ = require('lodash');
-const joi = require('joi');
-const internals = {
+var Shield = require('./Shield.js');
+var wrapRelations = require('./wrapRelations.js');
+var _ = require('lodash');
+var joi = require('joi');
+var internals = {
     models: {},
     acl: null,
     authConfig: []
@@ -26,7 +26,7 @@ function getAuthConfigs(modelName) {
  * @return null;
  */
 function setModel(Model, modelName) {
-    let authConfigs;
+    var authConfigs = undefined;
     if (!internals.acl) {
         throw new Error('Attempt to shield model before setting acl');
     }
@@ -73,7 +73,7 @@ function setAcl(acl) {
  * Validate that the all inputs are properly specified
  */
 function validate(options) {
-    const schema = joi.object().keys({
+    var schema = joi.object().keys({
         config: joi.array().min(_.keys(options.models).length).required(),
         acl: joi.object().required(),
         models: joi.object().required()

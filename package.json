@@ -11,6 +11,7 @@
     "create-error": "0.3.1",
     "joi": "6.2.0",
     "lodash": "3.6.0",
+    "precommit-hook": "^3.0.0",
     "thenify-all": "1.6.0"
   },
   "devDependencies": {
@@ -29,7 +30,10 @@
     "time-grunt": "1.0.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "lint": "jshint lib/. test/.",
+    "validate": "npm ls",
+    "build": "babel lib/main.js -o dist/main.js && git add dist/main.js"
   },
   "repository": {
     "type": "git",
@@ -40,5 +44,11 @@
   "bugs": {
     "url": "https://github.com/dylancwood/bookshelf-shield/issues"
   },
-  "homepage": "https://github.com/dylancwood/bookshelf-shield"
+  "homepage": "https://github.com/dylancwood/bookshelf-shield",
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test",
+    "build"
+  ]
 }
