@@ -33,7 +33,11 @@
     "test": "grunt test",
     "lint": "jshint lib/. test/.",
     "validate": "npm ls",
-    "build": "babel lib/main.js -o dist/main.js && git add dist/main.js"
+    "build": "babel lib/main.js -o dist/main.js && git add dist/main.js",
+    "preversion": "git checkout master && git pull && npm ls",
+    "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
+    "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
+    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish"
   },
   "repository": {
     "type": "git",
