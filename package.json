@@ -31,7 +31,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "lint": "jshint .",
+    "lint": "jshint lib/. test/.",
     "validate": "npm ls",
     "build": "babel lib/main.js -o dist/main.js && git add dist/main.js"
   },
