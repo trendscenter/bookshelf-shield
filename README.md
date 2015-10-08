@@ -2,7 +2,7 @@
 
 # bookshelf-shield
 Form a protective shield around your bookshelf models.
-This module adds ACL-based authorization, and a CRUD API to bookshelf models. 
+This module adds ACL-based authorization, and a CRUD API to bookshelf models.
 
 [ ![Codeship Status for MRN-Code/bookshelf-shield](https://codeship.com/projects/5003acd0-c992-0132-5525-0aefb56b1e0b/status?branch=master)](https://codeship.com/projects/75267)
 
@@ -13,7 +13,7 @@ Provides an intuitive interface for storing and querying Access Conrtol Lists.
 Relations is used to determine whether a user has been granted access to perform an action on the model.
 
 ### ES6
-This module utilizes ES6 features, including classes, arrow functions and Promises. As a result, running Node in harmony mode is recommended, and [Babel](https://babeljs.io) is used to polyfill these features until they are standard-issue.
+This module utilizes ES6 features, including classes, arrow functions and Promises. As a result, the code is [Babel](https://babeljs.io)ified to be compatible with all versions of node.
 
 # Usage
 1. Set up your ACL
@@ -76,7 +76,7 @@ Once a model has been shielded, you can interact with it using a standard CRUD A
     const user = { username: 'dylan' };
     const widget = new Widget({ id: '101' });
     widget.read(user).then((newWidget) => {
-        //newWidget successfully read 
+        //newWidget successfully read
     }).catch((error) => {
         //handle Error
     });
@@ -126,7 +126,7 @@ module.exports = {
         authKey: 'siteId', //alternative auth key to be used when evaluating create access
         aclContextName: 'site',
         method: function validateSiteAdmin(user) {
-            // this is a cusom authentication method that will be invoked instead of the generic method. 
+            // this is a cusom authentication method that will be invoked instead of the generic method.
             // `this` refers to the current instance of the bookshelf model
             const siteId = this.get('siteId');
             // data stored on the shield can be accessed through the current object's constructor (the bookshelf Model).
