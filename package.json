@@ -1,6 +1,6 @@
 {
   "name": "bookshelf-shield",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Access control list based authorization for bookshelf models",
   "main": "dist/main.js",
   "directories": {
