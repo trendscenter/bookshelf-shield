@@ -41,7 +41,7 @@ describe('Shield', () => {
     });
 
     before('Initialize bookshelf models', () => {
-        models.Study = bookshelf.Model.extend({tableName: 'mrs_studies'});
+        models.Study = bookshelf.Model.extend({ tableName: 'mrs_studies' });
     });
 
     before('Initialize relations', () => {
