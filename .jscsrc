@@ -1,0 +1,15 @@
+{
+    "esnext": true,
+    "preset": "airbnb",
+    "validateIndentation": 4,
+    "safeContextKeyword": ["self"],
+    "disallowMultipleVarDecl": "exceptUndefined",
+    "requireTrailingComma": null,
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInFunction": {
+        "beforeOpeningRoundBrace": true,
+        "beforeopeningCurlyBrace": false
+    }
+}

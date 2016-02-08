@@ -11,17 +11,21 @@
     "create-error": "0.3.1",
     "joi": "6.2.0",
     "lodash": "3.6.0",
-    "precommit-hook": "^3.0.0",
     "thenify-all": "1.6.0"
   },
   "devDependencies": {
     "bookshelf": "0.7.9",
     "chai": "2.2.0",
     "chai-as-promised": "5.0.0",
+    "coins-validate": "^1.1.12",
+    "gh-pages": "^0.9.0",
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.11.0",
     "grunt-jscs": "1.5.0",
     "grunt-mocha-cli": "1.12.0",
+    "jscs": "^2.9.0",
+    "jsdoc": "^3.4.0",
+    "jshint": "^2.9.1",
     "knex": "0.7.6",
     "load-grunt-config": "0.16.0",
     "load-grunt-tasks": "3.1.0",
@@ -37,7 +41,12 @@
     "preversion": "git checkout master && git pull && npm ls",
     "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
     "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
-    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish"
+    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish",
+    "lintfix": "jscs --fix src/**/*.js test/**/*.js",
+    "postlint": "jshint src/**/*.js test/**/*.js",
+    "docs": "jsdoc -d docs -r -R README.md src/ && git add docs/* && git commit -m \"stage docs\" && git push",
+    "deploy-docs": "gh-pages -d docs",
+    "postpublish": "npm run docs && npm run deploy-docs"
   },
   "repository": {
     "type": "git",
