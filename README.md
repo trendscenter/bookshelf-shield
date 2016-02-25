@@ -50,7 +50,7 @@ const config = [
 ```
 1. Shields up!
 ```js
-const shield = require('bookshelf-shield);
+const shield = require('bookshelf-shield');
 shield({
     config: config,
     acl: relations,
