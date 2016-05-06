@@ -299,6 +299,21 @@ describe('Shield', () => {
                     rejectedWith(AuthError, /cannot.*read/);
             });
         });
-    });
 
+        describe('bypass', () => {
+            const expectedSql = 'select "mrs_studies".* from "mrs_studies" ' +
+                    'where "mrs_studies"."id" = ? limit ?';
+            it('allow bypass of protected method', () => {
+                const promise = study.set('id', 1).bypass('fetch');
+                return expect(promise).to.eventually.have.
+                    deep.property('attributes.sql', expectedSql);
+            });
+
+            it('error on bad method', () => {
+                const result = study.bypass('badMethod');
+                return expect(result).to.be.
+                    rejectedWith(Error, 'no such protected method');
+            });
+        });
+    });
 });

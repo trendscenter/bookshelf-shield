@@ -49,6 +49,10 @@ describe('Shield', () => {
             expect(TestModel.shield).to.be.equal(shield);
         });
 
+        it('returns a shield with a protectedMethods property', () => {
+            expect(shield.protectedMethods).to.be.an.instanceOf(Array);
+        });
+
     });
 
     describe('addRules', () => {

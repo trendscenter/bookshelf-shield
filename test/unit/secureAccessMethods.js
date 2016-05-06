@@ -15,7 +15,8 @@ describe('secureAccessMethods', () => {
         'readAll',
         'create',
         'update',
-        'delete'
+        'delete',
+        'bypass'
     ];
 
     describe('all expected methods should exist', () => {
