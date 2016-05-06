@@ -13,7 +13,7 @@ Provides an intuitive interface for storing and querying Access Conrtol Lists.
 Relations is used to determine whether a user has been granted access to perform an action on the model.
 
 ### ES6
-This module utilizes ES6 features, including classes, arrow functions and Promises. As a result, the code is [Babel](https://babeljs.io)ified to be compatible with all versions of node.
+This module utilizes ES6 features, including classes, arrow functions and Promises. As a result node 4.0.0+ is required.
 
 # Usage
 1. Set up your ACL
@@ -108,6 +108,16 @@ Once a model has been shielded, you can interact with it using a standard CRUD A
     const widget = new Widget({ id: '101' });
     widget.delete(user).then((newWidget) => {
         //widgets successfully deleted (newWidget should now be empty)
+    }).catch((error) => {
+        //handle Error
+    });
+```
+
+1. bypass
+```js
+    const widget = new Widget({ id: '101' });
+    widget.bypass('fetch').then((newWidget) => {
+        //new Widget successfully created
     }).catch((error) => {
         //handle Error
     });
