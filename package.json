@@ -2,12 +2,12 @@
   "name": "bookshelf-shield",
   "version": "2.1.2",
   "description": "Access control list based authorization for bookshelf models",
-  "main": "dist/main.js",
+  "main": "lib/main.js",
+  "engines" : { "node" : ">=4.0.0" },
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "babel": "5.1.10",
     "create-error": "0.3.1",
     "joi": "6.2.0",
     "lodash": "3.6.0",
@@ -37,7 +37,6 @@
     "test": "grunt test",
     "lint": "jscs lib/ test/",
     "validate": "npm ls",
-    "build": "babel --out-dir=dist lib && git add dist/*",
     "preversion": "git checkout master && git pull && npm ls",
     "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
     "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
