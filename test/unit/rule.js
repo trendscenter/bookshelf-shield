@@ -52,20 +52,16 @@ describe('Rule', () => {
     });
 
     describe('isApplicable', () => {
-        it('should return true when the action matches', () => {
-            return rule.isApplicable('test').should.be.eql(true);
-        });
+        it('should return true when the action matches',
+        () => rule.isApplicable('test').should.be.eql(true));
 
-        it('should return false when the action does not match', () => {
-            return rule.isApplicable('somethingElse').should.be.eql(false);
-        });
+        it('should return false when the action does not match',
+        () => rule.isApplicable('somethingElse').should.be.eql(false));
     });
 
     describe('buildGeneric', () => {
         let options;
-        const testFn = () => {
-            return Rule.buildGeneric(options);
-        };
+        const testFn = () => Rule.buildGeneric(options);
 
         beforeEach('rebuild rule options', () => {
             options = {
