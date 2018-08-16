@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "create-error": "0.3.1",
-    "joi": "6.2.0",
-    "lodash": "3.6.0",
+    "joi": "13.6.0",
+    "lodash": "4.17.10",
     "thenify-all": "1.6.0"
   },
   "devDependencies": {
